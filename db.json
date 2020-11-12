@@ -1,0 +1,24 @@
+{
+    "posts" : [
+        {
+            "id" : "1",
+            "complaint" : "Shower",
+            "Description" : "leaking taps and cold water",
+            "Date"  : "2020-10-10"
+        },
+        {
+            "id" : "2",
+            "complaint" : "Bed",
+            "Description" : "old and bent sides",
+            "Date"  : "2020-05-05"
+        }
+    ],
+    "Users":[
+        {
+            "id" : "1",
+            "name" : "lonwabo",
+            "email" : "lonwabo@gmail.com"
+        }
+    ]
+
+}
