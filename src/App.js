@@ -1,16 +1,16 @@
 // import './App.css';
 import React from "react";
-import CreateAccount from "./pages/CreateAccount";
-import Header from "./components/Header";
-import About from "./pages/About"
-import Login from "./pages/Login"
-import Signup from "./pages/Signup";
-import Contact from "./pages/Contact"
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar"
-import Dashboard from "./pages/Dashboard"
-import Dash from "./pages/Dash"
-import Complaint from "./pages/Complaint"
+import CreateAccount from "./pages/account/CreateAccount";
+import Header from "./components/layout/header/Header";
+import About from "./pages/about/About"
+import Login from "./pages/account/Login"
+import Signup from "./pages/account/Signup";
+import Contact from "./pages/contact/Contact"
+import Home from "./pages/home/Home";
+import Navbar from "./components/layout/navigation/Navbar"
+import Dashboard from "./pages/home/Dashboard"
+import Dash from "./pages/home/Dash"
+import Complaint from "./pages/complaints/Complaint"
 import logo from "./assets/logo.png"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Tenants from "./pages/Tenants";

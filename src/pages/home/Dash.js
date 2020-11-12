@@ -1,8 +1,8 @@
 import React from 'react'
-import createAccount from "./Complaint";
-import Navbar from '../components/Navbar'
-import Complaint from './Complaint';
-import CreateAccount from "./CreateAccount";
+import createAccount from "../complaints/Complaint";
+// import Navbar from '../../components/Navbar'
+import Complaint from '../complaints/Complaint';
+// import CreateAccount from "./CreateAccount";
 import { Button } from 'antd'
 
 
