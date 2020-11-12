@@ -12,6 +12,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { IoMdMenu } from 'react-icons/io';
 import CreateComplaint from "../../components/complaints/create-complaint"
+import ViewComplaint from "../../components/complaints/view-complaint"
 import Modal from '@material-ui/core/Modal';
 
 
@@ -72,16 +73,31 @@ export default function Complaint() {
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
+    const [openView, setOpenView] = React.useState(false);
+    const [openEdit, setOpenViewEdit] = React.useState(false);
+    const [openDelete, setOpenDelete] = React.useState(false);
+    const [selectedComplaint, setSelectedComplaint] = React.useState(null);
 
     const handleModalOpen = () => {
         setOpen(true);
     };
+    const handleModalOpenView = (complaint, event) => {
+        setOpenView(true);
+        setSelectedComplaint(complaint);
+    }
 
+    const handleModalOpenEdit = (complaint, event) => {
+        setOpenViewEdit(true);
+        setSelectedComplaint(complaint);
+    }
+    const handleModalDelete = (complaint, event) => {
+        setOpenDelete(true);
+        setSelectedComplaint(complaint);
+    }
     const handleModalClose = () => {
         setOpen(false);
     };
     //End Modal
-
 
 
     return (
@@ -103,7 +119,7 @@ export default function Complaint() {
                             <TableCell>Description</TableCell>
                             <TableCell align="right">Tenant name</TableCell>
                             <TableCell align="right">Status</TableCell>
-                            <TableCell align="right">Actions&nbsp;(g)</TableCell>
+                            <TableCell align="right">Actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -114,36 +130,50 @@ export default function Complaint() {
                                 </TableCell>
                                 <TableCell align="right">{row.calories}</TableCell>
                                 <TableCell align="right">{row.fat}</TableCell>
-                                <TableCell align="right"><Button aria-controls="simple-menu"
-                                    aria-haspopup="true" onClick={handleClick}>
-                                    <IoMdMenu></IoMdMenu></Button></TableCell>
+                                <TableCell align="right">
+                                    <Button aria-controls="simple-menu"
+                                        aria-haspopup="true" onClick={handleClick}>
+                                        <IoMdMenu></IoMdMenu>
+                                    </Button>
+                                    <Menu
+                                        id="simple-menu"
+                                        anchorEl={anchorEl}
+                                        keepMounted
+                                        open={Boolean(anchorEl)}
+                                        onClose={handleClose}
+                                    >
+                                        <MenuItem onClick={e => handleModalOpenView(row, e)}>View</MenuItem>
+                                        <MenuItem onClick={e => handleModalOpenEdit(row, e)}>Edit</MenuItem>
+                                        <MenuItem onClick={e => handleModalDelete(row, e)}>Delete</MenuItem>
+                                    </Menu>
+                                </TableCell>
 
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-            >
-                <MenuItem onClick={handleClose}>View</MenuItem>
-                <MenuItem onClick={handleClose}>Edit</MenuItem>
-                <MenuItem onClick={handleClose}>Delete</MenuItem>
-            </Menu>
             <Modal
                 open={open}
                 onClose={handleModalClose}
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
             >
-                
+
                 <CreateComplaint></CreateComplaint>
             </Modal>
+            <Modal
+                open={openView}
+                onClose={handleModalClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+            >
+
+                <ViewComplaint></ViewComplaint>
+            </Modal>
+
         </>
+
     );
 }
  
