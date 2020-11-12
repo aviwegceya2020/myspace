@@ -9,6 +9,13 @@ Fonts
 Variables 
 ======
 */
+
+/*
+*List styles
+*/
+.list-group{
+  
+}
 :root {
   /* --primaryColor: #9e3aa3; */
   /* --primaryDarkColor: #4e1d51; */

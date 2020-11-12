@@ -13,6 +13,7 @@ import Dash from "./pages/Dash"
 import Complaint from "./pages/Complaint"
 import logo from "./assets/logo.png"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Tenants from "./pages/Tenants";
 
 // react admin
 // import { Admin, Resource } from 'react-admin'
@@ -45,6 +46,9 @@ export default function App() {
         </Route> */}
         <Route exact path="/Login">
           <Login></Login>
+        </Route>
+        <Route path="/tenants">
+          <Tenants></Tenants>
         </Route>
         <Route path="/Signup">
           <Signup></Signup>

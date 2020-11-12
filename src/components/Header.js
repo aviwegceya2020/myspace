@@ -24,9 +24,6 @@ export default function Header() {
                         {/* <li>
                             <Link to="/Complaint">Complaint</Link>
                         </li> */}
-
-
-
                     </div>
                     <div>
                     </div>

@@ -13,7 +13,7 @@ export const SidebarData = [
     {
         title: 'Complaints',
         path: '/complaints',
-        icon: <IoIcons.IoMdLogIn />,
+        icon: <IoIcons.IoMdList />,
         cName: 'nav-text'
     },
     // {
@@ -23,17 +23,23 @@ export const SidebarData = [
     //     cName: 'nav-text'
     // }
     // ,
-    // {
-    //     title: 'Complaint',
-    //     path: '/Complaint',
-    //     icon: <IoIcons.IoMdCreate />,
-    //     cName: 'nav-text'
-    // }
-    // ,
+    {
+        title: 'Tenants',
+        path: '/tenants',
+        icon: <FaIcons.FaUser />,
+        cName: 'nav-text'
+    }
+    ,
     {
         title: 'Extras',
         path: '/extras',
-        icon: <IoIcons.IoMdCreate />,
+        icon: <IoIcons.IoIosMore />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Announcement',
+        path: '/posts',
+        icon: <FaIcons.FaStickyNote />,
         cName: 'nav-text'
     }
 
