@@ -14,6 +14,7 @@ import { IoMdMenu } from 'react-icons/io';
 import CreateComplaint from "../../components/complaints/create-complaint"
 import ViewComplaint from "../../components/complaints/view-complaint"
 import Modal from '@material-ui/core/Modal';
+import EditComplaint from '../../components/complaints/edit-complaint';
 
 
 function createData(name, calories, fat, carbs, protein) {
@@ -144,7 +145,7 @@ export default function Complaint() {
                                     >
                                         <MenuItem onClick={e => handleModalOpenView(row, e)}>View</MenuItem>
                                         <MenuItem onClick={e => handleModalOpenEdit(row, e)}>Edit</MenuItem>
-                                        <MenuItem onClick={e => handleModalDelete(row, e)}>Delete</MenuItem>
+                                        <MenuItem onClick={e => handleModalDelete(row, e) }>Delete</MenuItem>
                                     </Menu>
                                 </TableCell>
 
@@ -172,6 +173,15 @@ export default function Complaint() {
                 <ViewComplaint></ViewComplaint>
             </Modal>
 
+            <Modal
+                open={openEdit}
+                onClose={handleModalClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+            >
+                <EditComplaint handleModalOpenEdit={() => handleModalOpenEdit()}></EditComplaint>
+            </Modal>
+        
         </>
 
     );

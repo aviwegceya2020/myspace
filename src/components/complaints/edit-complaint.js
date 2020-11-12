@@ -10,13 +10,17 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
-export default function EditComplaint() {
+export default function EditComplaint(props) {
+
+    const {row} = props
     // const classes = useStyles();
     // const [value, setValue] = React.useState('Controlled');
 
     // const handleChange = (event) => {
     //     setValue(event.target.value);
     // };
+
+    console.log('hello ' + row);
     return (
         <section className="form section">
 
