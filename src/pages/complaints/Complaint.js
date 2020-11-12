@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { IoMdMenu } from 'react-icons/io';
@@ -131,10 +132,10 @@ export default function Complaint() {
                                 <TableCell align="right">{row.calories}</TableCell>
                                 <TableCell align="right">{row.fat}</TableCell>
                                 <TableCell align="right">
-                                    <Button aria-controls="simple-menu"
+                                    <IconButton aria-controls="simple-menu"
                                         aria-haspopup="true" onClick={handleClick}>
                                         <IoMdMenu></IoMdMenu>
-                                    </Button>
+                                    </IconButton>
                                     <Menu
                                         id="simple-menu"
                                         anchorEl={anchorEl}
