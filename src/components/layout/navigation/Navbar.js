@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
-import logo from "../assets/logow.png"
+import logo from "../../../assets/logow.png"
 
 
 function Navbar() {

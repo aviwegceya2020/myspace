@@ -139,6 +139,10 @@ Buttons
 .table-container{
   margin-top: 50px !important;
 }
+.new-button {
+  float: right !important;
+  padding: 15px;
+}
 /* 
 ====== 
 Header
