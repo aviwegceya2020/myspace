@@ -53,14 +53,7 @@ const DialogActions = withStyles((theme) => ({
         padding: theme.spacing(1),
     },
 }))(MuiDialogActions);
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
-}));
+
 export default function EditComplaint(props) {
     const { open, onClose } = props;
     const handleModalClose = () => {
@@ -80,10 +73,9 @@ export default function EditComplaint(props) {
 
             <form className="login-form" noValidate autoComplete="off">
                 <DialogContent dividers>
-                    <TextField className="description" variant="outlined" aria-readonly label="Tenant name" type="text" id="name"></TextField>
-
-                    <TextField label="description" variant="outlined" className="description" rows="4" cols="4">
-                    </TextField>
+                    <TextField disabled className="description" variant="outlined" aria-readonly label="Tenant name" type="text" id="name" />
+                    <br /> <br />
+                    <TextField multiline label="description" variant="outlined" className="description" rowsMax="10" />
 
                 </DialogContent>
                 <DialogActions>

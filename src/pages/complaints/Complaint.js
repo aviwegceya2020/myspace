@@ -16,6 +16,7 @@ import CreateComplaint from "../../components/complaints/create-complaint"
 import ViewComplaint from "../../components/complaints/view-complaint"
 import EditComplaint from "../../components/complaints/edit-complaint"
 import Modal from '@material-ui/core/Modal';
+import Delete from '../../components/delete/delete';
 
 
 // function createData(name, description, fat, carbs, protein) {
@@ -110,6 +111,12 @@ export default function Complaint() {
 
     };
 
+    const handleModalCloseDelete = (complaint, event) => {
+        setOpenDelete(false);
+    };
+
+
+
     //End Modal
 
 
@@ -169,6 +176,7 @@ export default function Complaint() {
             <CreateComplaint open={open} onClose={handleModalClose}></CreateComplaint>
             <ViewComplaint open={openView} onClose={handleModalCloseView}></ViewComplaint>
             <EditComplaint open={openEdit} onClose={handleModalCloseEdit}></EditComplaint>
+            <Delete open={openDelete} onClose={handleModalCloseDelete}></Delete>
             {/* <Modal
                 open={open}
                 onClose={handleModalClose}
@@ -198,17 +206,9 @@ export default function Complaint() {
                 <EditComplaint complaints={complaint}></EditComplaint>
             </Modal> */}
 
-            <Modal
-                open={openEdit}
-                onClose={handleModalClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-            >
-                <EditComplaint handleModalOpenEdit={(row) => handleModalOpenEdit(row)}></EditComplaint>
-            </Modal>
-        
+
+
         </>
 
     );
 }
- 
