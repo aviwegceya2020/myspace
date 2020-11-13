@@ -11,33 +11,37 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 export default function ViewComplaint() {
-  
+
     return (
         <section className="form section">
 
             <form className="login-form" noValidate autoComplete="off">
                 <h2 className="section-title">View Complaint</h2>
                 <div className="form-control">
-                    <label htmlFor="tenant-name">name</label>
-                    <TextField
+                    <label htmlFor="name">Tenant name</label>
+                    <input
                         type="text"
-                        id="tenant-name">
-                    </TextField>
+                        id="name">
+                    </input>
                     <label htmlFor="complaint">complaint</label>
                     <textarea className="description" rows="4" cols="4">
+                    </textarea>
+                    <label htmlFor="complaint">Respond</label>
+                    <textarea placeholder="Enter response" className="description" rows="4" cols="4">
                     </textarea>
                 </div>
                 <div className="buttons">
                     <button type="submit"
                         className="btn btn-primary">
-                        Cancel
+                        Close
                     </button>
                     &nbsp;
                     <button type="submit"
                         className="btn btn-primary ml-2">
-                        Update
+                        Respond
                     </button>
                 </div>
+
             </form>
         </section>
     )

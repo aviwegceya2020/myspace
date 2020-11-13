@@ -16,30 +16,24 @@ export const SidebarData = [
         icon: <IoIcons.IoMdList />,
         cName: 'nav-text'
     },
-    // {
-    //     title: 'Update Profile',
-    //     path: '/CreateAccount',
-    //     icon: <IoIcons.IoMdCreate />,
-    //     cName: 'nav-text'
-    // }
-    // ,
+    {
+        title: 'Update Profile',
+        path: '/UpdateAccount',
+        icon: <IoIcons.IoMdCreate />,
+        cName: 'nav-text'
+    }
+    ,
     {
         title: 'Tenants',
         path: '/tenants',
-        icon: <FaIcons.FaUser />,
+        icon: <FaIcons.FaUser/>,
         cName: 'nav-text'
     }
     ,
     {
         title: 'Extras',
         path: '/extras',
-        icon: <IoIcons.IoIosMore />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Announcement',
-        path: '/posts',
-        icon: <FaIcons.FaStickyNote />,
+        icon: <IoIcons.IoIosAdd />,
         cName: 'nav-text'
     }
 

@@ -10,35 +10,21 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
-export default function EditComplaint({ handleModalOpenEdit}) {
+export default function ViewComplaint() {
 
-    const { row } = handleModalOpenEdit
-    // const classes = useStyles();
-    // const [value, setValue] = React.useState('Controlled');
-
-    // const handleChange = (event) => {
-    //     setValue(event.target.value);
-    // };
-
-    console.log('hello ' + handleModalOpenEdit);
     return (
         <section className="form section">
 
             <form className="login-form" noValidate autoComplete="off">
                 <h2 className="section-title">Edit Complaint</h2>
                 <div className="form-control">
-                    <label htmlFor="complaint">complaint</label>
-                    {/* <TextField
-                        id="standard-multiline-flexible"
-                        label="Multiline"
-                        multiline
-                        rowsMax={4}
-                        // value={value}
-                        // onChange={handleChange}
-                    /> */}
-                    <textarea className="description" rows="4" cols="4"
-                        placeholder="Enter complaint here">
-
+                    <label htmlFor="name">Tenant name</label>
+                    <input
+                        type="text"
+                        id="name">
+                    </input>
+                    <label htmlFor="complaint">Description</label>
+                    <textarea className="description" rows="4" cols="4">
                     </textarea>
                 </div>
                 <div className="buttons">
@@ -49,12 +35,9 @@ export default function EditComplaint({ handleModalOpenEdit}) {
                     &nbsp;
                     <button type="submit"
                         className="btn btn-primary ml-2">
-                        Save
+                        Update
                     </button>
-
                 </div>
-
-
             </form>
         </section>
     )
