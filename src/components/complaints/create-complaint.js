@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import "./create-complaint.css";
+
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -17,6 +18,7 @@ export default function CreateComplaint() {
     // const handleChange = (event) => {
     //     setValue(event.target.value);
     // };
+    
     return (
         <section className="form section">
 
@@ -37,8 +39,6 @@ export default function CreateComplaint() {
 
                     </textarea>
                 </div>
-
-
                 <div className="buttons">
                     <button type="submit"
                         className="btn btn-primary">
@@ -49,10 +49,7 @@ export default function CreateComplaint() {
                         className="btn btn-primary ml-2">
                         Submit
                     </button>
-
                 </div>
-
-
             </form>
         </section>
     )

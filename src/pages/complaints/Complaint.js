@@ -37,9 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const rows = [
-    createData('Frozen yoghurt', 'Aviwe Gceya', 'Pending'),
-    createData('Ice cream sandwich', 'Lonwabo Msingelwa', 'Viewed'),
-    createData('Eclair', 'Thabo John ', 'Responded'),
+    {}
 ];
 //Start Modal
 function rand() {
@@ -141,6 +139,7 @@ export default function Complaint() {
                                         id="simple-menu"
                                         anchorEl={anchorEl}
                                         keepMounted
+                                        
                                         open={Boolean(anchorEl)}
                                         onClose={handleClose}
                                     >
