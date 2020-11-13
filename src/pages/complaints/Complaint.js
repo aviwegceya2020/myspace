@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { IoMdMenu } from 'react-icons/io';
 import CreateComplaint from "../../components/complaints/create-complaint"
 import ViewComplaint from "../../components/complaints/view-complaint"
+import EditComplaint from "../../components/complaints/edit-complaint"
 import Modal from '@material-ui/core/Modal';
 
 
@@ -148,7 +149,6 @@ export default function Complaint() {
                                         <MenuItem onClick={e => handleModalDelete(row, e)}>Delete</MenuItem>
                                     </Menu>
                                 </TableCell>
-
                             </TableRow>
                         ))}
                     </TableBody>
@@ -171,6 +171,15 @@ export default function Complaint() {
             >
 
                 <ViewComplaint></ViewComplaint>
+            </Modal>
+            <Modal
+                open={openEdit}
+                onClose={handleModalClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+            >
+
+                <EditComplaint></EditComplaint>
             </Modal>
 
         </>

@@ -18,6 +18,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import CreateAccount from "./pages/account/CreateAccount";
+import UpdateAccount from "./pages/account/UpdateAccount";
 import Header from "./components/layout/header/Header";
 import About from "./pages/about/About"
 import Login from "./pages/account/Login"
@@ -182,6 +183,9 @@ export default function MiniDrawer() {
             </Route>
             <Route path="/CreateAccount">
               <CreateAccount></CreateAccount>
+            </Route>
+            <Route path="/UpdateAccount">
+              <UpdateAccount></UpdateAccount>
             </Route>
             <Route path="/Complaints">
               <Complaint></Complaint>
