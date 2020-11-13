@@ -180,7 +180,7 @@ export default function Complaint() {
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
             >
-                <EditComplaint handleModalOpenEdit={() => handleModalOpenEdit()}></EditComplaint>
+                <EditComplaint handleModalOpenEdit={(row) => handleModalOpenEdit(row)}></EditComplaint>
             </Modal>
         
         </>

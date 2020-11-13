@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
-export default function EditComplaint(props) {
+export default function EditComplaint({ handleModalOpenEdit}) {
 
-    const {row} = props
+    const { row } = handleModalOpenEdit
     // const classes = useStyles();
     // const [value, setValue] = React.useState('Controlled');
 
@@ -20,7 +20,7 @@ export default function EditComplaint(props) {
     //     setValue(event.target.value);
     // };
 
-    console.log('hello ' + row);
+    console.log('hello ' + handleModalOpenEdit);
     return (
         <section className="form section">
 

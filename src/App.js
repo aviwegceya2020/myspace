@@ -113,7 +113,8 @@ export default function MiniDrawer() {
       <CssBaseline />
       <AppBar
         position="fixed"
-        className={clsx(classes.appBar, {
+        className={clsx(classes.appBar,
+          {
           [classes.appBarShift]: open,
         })}
       >
@@ -164,7 +165,6 @@ export default function MiniDrawer() {
                 </Link>
               </ListItem>
             )
-                
           })}
         
         </List>
