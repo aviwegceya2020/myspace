@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -18,9 +18,9 @@ import EditComplaint from "../../components/complaints/edit-complaint"
 import Modal from '@material-ui/core/Modal';
 
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
+// function createData(name, description, fat, carbs, protein) {
+//     return { name, calories, fat, carbs, protein };
+// }
 const useStyles = makeStyles((theme) => ({
     table: {
         minWidth: 650,
@@ -36,10 +36,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const rows = [
-    createData('Frozen yoghurt', 'Aviwe Gceya', 'Pending'),
-    createData('Ice cream sandwich', 'Lonwabo Msingelwa', 'Viewed'),
-    createData('Eclair', 'Thabo John ', 'Responded'),
+const complaints = [
+    { id: '1', description: 'Shower', name: 'Lloyd', status: 'viewed' }
 ];
 //Start Modal
 function rand() {
@@ -61,6 +59,10 @@ function getModalStyle() {
 //End modal
 
 export default function Complaint() {
+    const complaints = [
+        { id: '1', description: 'Shower', name: 'Lonwabo', status: 'viewed' },
+        { id: '2', description: 'Kitchen', name: 'Aviwe', status: 'Responded' }
+    ];
 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -74,31 +76,40 @@ export default function Complaint() {
     //Start Modal
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
+
     const [open, setOpen] = React.useState(false);
     const [openView, setOpenView] = React.useState(false);
     const [openEdit, setOpenViewEdit] = React.useState(false);
     const [openDelete, setOpenDelete] = React.useState(false);
-    const [selectedComplaint, setSelectedComplaint] = React.useState(null);
+    const [selectedComplaint, setSelectedComplaint] = React.useState();
+    const [complaint, setcomplaint] = useState('')
 
     const handleModalOpen = () => {
         setOpen(true);
     };
     const handleModalOpenView = (complaint, event) => {
         setOpenView(true);
-        setSelectedComplaint(complaint);
-    }
+    };
 
     const handleModalOpenEdit = (complaint, event) => {
         setOpenViewEdit(true);
-        setSelectedComplaint(complaint);
-    }
+
+    };
     const handleModalDelete = (complaint, event) => {
         setOpenDelete(true);
-        setSelectedComplaint(complaint);
-    }
+        setSelectedComplaint(selectedComplaint);
+    };
     const handleModalClose = () => {
         setOpen(false);
     };
+    const handleModalCloseView = (complaint, event) => {
+        setOpenView(false);
+    };
+    const handleModalCloseEdit = (complaint, event) => {
+        setOpenViewEdit(false);
+
+    };
+
     //End Modal
 
 
@@ -125,13 +136,13 @@ export default function Complaint() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <TableRow key={row.name}>
+                        {complaints.map((complaint) => (
+                            <TableRow key={complaint.id}>
                                 <TableCell component="th" scope="row">
-                                    {row.name}
+                                    {complaint.description}
                                 </TableCell>
-                                <TableCell align="right">{row.calories}</TableCell>
-                                <TableCell align="right">{row.fat}</TableCell>
+                                <TableCell align="right">{complaint.name}</TableCell>
+                                <TableCell align="right">{complaint.status}</TableCell>
                                 <TableCell align="right">
                                     <IconButton aria-controls="simple-menu"
                                         aria-haspopup="true" onClick={handleClick}>
@@ -141,12 +152,13 @@ export default function Complaint() {
                                         id="simple-menu"
                                         anchorEl={anchorEl}
                                         keepMounted
+                                        complaints={complaints}
                                         open={Boolean(anchorEl)}
                                         onClose={handleClose}
                                     >
-                                        <MenuItem onClick={e => handleModalOpenView(row, e)}>View</MenuItem>
-                                        <MenuItem onClick={e => handleModalOpenEdit(row, e)}>Edit</MenuItem>
-                                        <MenuItem onClick={e => handleModalDelete(row, e)}>Delete</MenuItem>
+                                        <MenuItem onClick={e => handleModalOpenView(complaint, e)}>View</MenuItem>
+                                        <MenuItem onClick={e => handleModalOpenEdit(complaint, e)}>Edit</MenuItem>
+                                        <MenuItem onClick={e => handleModalDelete(complaint, e)}>Delete</MenuItem>
                                     </Menu>
                                 </TableCell>
                             </TableRow>
@@ -154,7 +166,10 @@ export default function Complaint() {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Modal
+            <CreateComplaint open={open} onClose={handleModalClose}></CreateComplaint>
+            <ViewComplaint open={openView} onClose={handleModalCloseView}></ViewComplaint>
+            <EditComplaint open={openEdit} onClose={handleModalCloseEdit}></EditComplaint>
+            {/* <Modal
                 open={open}
                 onClose={handleModalClose}
                 aria-labelledby="simple-modal-title"
@@ -174,13 +189,14 @@ export default function Complaint() {
             </Modal>
             <Modal
                 open={openEdit}
+                complaints={complaint}
                 onClose={handleModalClose}
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
             >
 
-                <EditComplaint></EditComplaint>
-            </Modal>
+                <EditComplaint complaints={complaint}></EditComplaint>
+            </Modal> */}
 
         </>
 

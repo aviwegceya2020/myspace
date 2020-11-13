@@ -1,59 +1,100 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+// import DialogTitle from '@material-ui/core/DialogTitle';
+// import DialogContent from '@material-ui/core/DialogContent';
+// import DialogActions from '@material-ui/core/DialogActions';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogActions from '@material-ui/core/DialogActions';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Typography from '@material-ui/core/Typography';
 import "./create-complaint.css";
-const useStyles = makeStyles((theme) => ({
+import { Button } from '@material-ui/core';
+const styles = (theme) => ({
     root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
+        margin: 0,
+        padding: theme.spacing(2),
+        width: 500
     },
-}));
-export default function CreateComplaint() {
-    // const classes = useStyles();
-    // const [value, setValue] = React.useState('Controlled');
+    closeButton: {
+        position: 'absolute',
+        right: theme.spacing(1),
+        top: theme.spacing(1),
+        color: theme.palette.grey[500],
+    },
+});
 
-    // const handleChange = (event) => {
-    //     setValue(event.target.value);
-    // };
+const DialogTitle = withStyles(styles)((props) => {
+    const { children, classes, onClose, ...other } = props;
     return (
-        <section className="form section">
+        <MuiDialogTitle disableTypography className={classes.root} {...other}>
+            <Typography variant="h6">{children}</Typography>
+            {onClose ? (
+                <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+                    <CloseIcon />
+                </IconButton>
+            ) : null}
+        </MuiDialogTitle>
+    );
+});
 
+const DialogContent = withStyles((theme) => ({
+    root: {
+        padding: theme.spacing(2),
+    },
+}))(MuiDialogContent);
+
+const DialogActions = withStyles((theme) => ({
+    root: {
+        margin: 0,
+        padding: theme.spacing(1),
+    },
+}))(MuiDialogActions);
+
+export default function CreateComplaint(props) {
+    // const [modalStyle] = React.useState(getModalStyle);
+    const { open, onClose } = props;
+    const handleModalClose = () => {
+        onClose('jjhyy');
+    };
+    return (
+        <Dialog className="form section"
+            open={open}
+            onClose={handleModalClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description">
+            <DialogTitle id="customized-dialog-title" onClose={handleModalClose}>
+                New Complaint
+            </DialogTitle>
             <form className="login-form" noValidate autoComplete="off">
-                <h2 className="section-title">New Complaint</h2>
-                <div className="form-control">
-                    <label htmlFor="complaint">complaint</label>
-                    {/* <TextField
+                <DialogContent dividers>
+                    
+                    <TextField
+                        className="form-control"
                         id="standard-multiline-flexible"
-                        label="Multiline"
+                        label="Description"
+                        variant="outlined"
                         multiline
-                        rowsMax={4}
-                        // value={value}
-                        // onChange={handleChange}
-                    /> */}
-                    <textarea className="description" rows="4" cols="4"
-                        placeholder="Enter complaint here">
+                        rowsMax={10}
+                    // value={value}
+                    // onChange={handleChange}
+                    />
 
-                    </textarea>
-                </div>
-
-
-                <div className="buttons">
-                    <button type="submit"
-                        className="btn btn-primary">
+                </DialogContent>
+                <DialogActions>
+                    <Button autoFocus onClick={handleModalClose} color="primary">
                         Cancel
-                    </button>
-                    &nbsp;
-                    <button type="submit"
-                        className="btn btn-primary ml-2">
+                    </Button>
+                    <Button variant="contained" color="primary" autoFocus onClick={handleModalClose} color="primary">
                         Submit
-                    </button>
+                    </Button>
 
-                </div>
-
-
+                </DialogActions>
             </form>
-        </section>
+        </Dialog>
     )
 }
