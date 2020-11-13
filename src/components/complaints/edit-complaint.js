@@ -79,11 +79,13 @@ export default function EditComplaint(props) {
 
                 </DialogContent>
                 <DialogActions>
+
+
                     <Button autoFocus onClick={handleModalClose} color="primary">
                         Cancel
                     </Button>
                     <Button variant="contained" color="primary" autoFocus onClick={handleModalClose} color="primary">
-                        Submit
+                        Submit loyd
                     </Button>
                 </DialogActions>
             </form>
