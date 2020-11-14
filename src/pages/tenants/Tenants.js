@@ -9,7 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import { Button, Menu, MenuItem } from '@material-ui/core';
 import { IoMdMenu } from 'react-icons/io';
 import { useEffect, useState } from 'react';
-import { db } from '../firebaseConfig/firebase';
+import { db } from '../../firebaseConfig/firebase';
+import ViewTenant from '../../components/tenant/ViewTenant'
 
 const useStyles = makeStyles({
     table: {
@@ -22,6 +23,25 @@ export default function Tenants() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
     const [tenants, setTenants] = useState([])
+
+    const [open, setOpen] = useState(false);
+    const [openView, setOpenView] = useState(false);
+    const [selectedTenant, setSelectedTenant] = useState(null)
+
+    const handleModalOpen = () => {
+        setOpen(true);
+    };
+    const handleModalOpenView = (e, tenant) => {
+        setOpenView(true);
+        setSelectedTenant(tenant)
+    };
+
+    const handleModalCloseView = (complaint, event) => {
+        setOpenView(false);
+    };
+    const handleModalDelete = (e, tenant) => {
+        setOpenView(false);
+    };
 
     useEffect(() => {
         db.collection("/tenants")
@@ -73,23 +93,38 @@ export default function Tenants() {
                                     <TableCell align="center">{tenant.email}</TableCell>
                                     <TableCell align="right"><Button aria-controls="simple-menu"
                                         aria-haspopup="true" onClick={handleClick}>
-                                        <IoMdMenu></IoMdMenu></Button></TableCell>
+                                        <IoMdMenu></IoMdMenu></Button>
+
+                                        <Menu
+                                            id="simple-menu"
+                                            anchorEl={anchorEl}
+                                            keepMounted
+                                            open={Boolean(anchorEl)}
+                                            onClose={handleClose}
+                                        >
+                                            <MenuItem onClick={e => handleModalOpenView(e, tenant)}>View</MenuItem>
+                                            <MenuItem onClick={e => handleModalDelete(e, tenant)}>Delete</MenuItem>
+                                        </Menu>
+                                    </TableCell>
+
                                 </TableRow>
-                                
+
                             ))}
+
                     </TableBody>
                 </Table>
+
             </TableContainer>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-            >
-                <MenuItem onClick={handleClose}>View</MenuItem>
-                <MenuItem onClick={handleClose}>Delete</MenuItem>
-            </Menu>
+
+            {
+                selectedTenant ?
+                    (
+                        <ViewTenant open={openView} onClose={handleModalCloseView} tenant={selectedTenant} />
+                    ) : (
+                        null
+                    )
+            }
+
         </>
     );
 }

@@ -32,7 +32,7 @@ import Complaint from "./pages/complaints/Complaint"
 import logo from "./assets/logo.png"
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import { SidebarData } from '../src/components/layout/navigation/SidebarData';
-import Tenants from './pages/Tenants';
+import Tenants from './pages/tenants/Tenants';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
