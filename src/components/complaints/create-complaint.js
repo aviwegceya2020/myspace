@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -56,10 +56,20 @@ const DialogActions = withStyles((theme) => ({
 
 export default function CreateComplaint(props) {
     // const [modalStyle] = React.useState(getModalStyle);
+
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
     const { open, onClose } = props;
     const handleModalClose = () => {
         onClose('jjhyy');
     };
+    const handleSubmit = (e) => {
+        console.log("Hello submit "+ name + description)
+    }
+    const handleChange = (e) => {
+        setName(e.target.value)
+        setDescription(e.target.value)
+    }
     return (
         <Dialog className="form section"
             open={open}
@@ -74,21 +84,30 @@ export default function CreateComplaint(props) {
                     
                     <TextField
                         className="form-control"
+                        id="standard-flexible"
+                        label="Name"
+                        variant="outlined"
+                        multiline
+                        rowsMax={2}
+                        onChange={handleChange}
+                    />
+                    <br/><br/>
+
+                    <TextField
+                        className="form-control"
                         id="standard-multiline-flexible"
                         label="Description"
                         variant="outlined"
                         multiline
                         rowsMax={10}
-                    // value={value}
-                    // onChange={handleChange}
+                        onChange={handleChange}
                     />
-
                 </DialogContent>
                 <DialogActions>
                     <Button autoFocus onClick={handleModalClose} color="primary">
                         Cancel
                     </Button>
-                    <Button variant="contained" color="primary" autoFocus onClick={handleModalClose} color="primary">
+                    <Button variant="contained" color="primary" autoFocus onClick={handleSubmit} color="primary">
                         Submit
                     </Button>
 
